@@ -8,8 +8,10 @@ multiple choice answers for any subject.
 
 ### Screen Examples
 
-**Starting a New Quiz**
-![Quiz Begin](docs/genai-quiz-begin.png)
+#### Starting a New Quiz
 
-**Completion of Quiz**
-![Quiz End](docs/genai-quiz-end.png)
+<img src="docs/genai-quiz-begin" alt="screenshot" width="200"/>
+
+#### Completion of Quiz
+
+<img src="docs/genai-quiz-end" alt="screenshot" width="200"/>
