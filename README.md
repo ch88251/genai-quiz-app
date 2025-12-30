@@ -10,8 +10,8 @@ multiple choice answers for any subject.
 
 #### Starting a New Quiz
 
-<img src="docs/genai-quiz-begin" alt="screenshot" width="200"/>
+<img src="docs/genai-quiz-begin.png" alt="screenshot" width="200"/>
 
 #### Completion of Quiz
 
-<img src="docs/genai-quiz-end" alt="screenshot" width="200"/>
+<img src="docs/genai-quiz-end.png" alt="screenshot" width="200"/>
