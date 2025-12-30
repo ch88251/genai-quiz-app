@@ -1,11 +1,12 @@
 import json
 import re
-import google.generativeai as genai
-from config import GEMINI_API_KEY, MODEL_NAME
+from google import genai
+from config import MODEL_NAME
 from prompts import QUIZ_PROMPT
 from models import Question
 
-genai.configure(api_key=GEMINI_API_KEY)
+
+client = genai.Client()
 
 def extract_json(text: str) -> dict:
     if not text or not text.strip():
@@ -26,13 +27,15 @@ def extract_json(text: str) -> dict:
 
 class GeminiClient:
     def __init__(self):
-        self.model = genai.GenerativeModel(MODEL_NAME)
+        self.client = genai.Client()
 
     def generate_question(self, subject, difficulty="medium", retries=3) -> Question:
         prompt = QUIZ_PROMPT.format(subject=subject, difficulty=difficulty)
 
         for attempt in range(1, retries + 1):
-            response = self.model.generate_content(prompt)
+            response = self.client.models.generate_content(
+                model=MODEL_NAME, contents=prompt
+            )
             raw_text = (response.text or "").strip()
 
             try:
