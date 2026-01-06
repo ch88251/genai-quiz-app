@@ -105,6 +105,7 @@ class QuizGUI:
         answer_frame = tk.Frame(self.root)
         answer_frame.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
         
+        # Create 4 radio buttons (matching the expected number of choices from Gemini)
         self.answer_buttons = []
         for i in range(4):
             rb = tk.Radiobutton(
@@ -265,7 +266,7 @@ def launch_gui():
     
     if dialog.subject and dialog.num_questions:
         root.deiconify()  # Show main window
-        app = QuizGUI(root, dialog.subject, dialog.num_questions)
+        QuizGUI(root, dialog.subject, dialog.num_questions)
         root.mainloop()
     else:
         root.destroy()
