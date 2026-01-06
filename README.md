@@ -24,6 +24,10 @@ This application features a tkinter-based GUI with:
 
 <img src="docs/gui-main-window.png" alt="Main quiz window" width="600"/>
 
+#### Answer Selection
+
+<img src="docs/gui-answer-selected.png" alt="Answer selected" width="600"/>
+
 #### Last Question with Finish Button
 
 <img src="docs/gui-finish-button.png" alt="Last question with Finish button" width="600"/>
