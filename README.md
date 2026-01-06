@@ -4,6 +4,36 @@ A quiz application with a graphical user interface (GUI) that uses Python with G
 automatically fetch and present random quiz questions with 
 multiple choice answers for any subject.
 
+## Installation
+
+### Prerequisites
+
+1. **Python 3.8 or higher**
+
+2. **tkinter** (required for GUI)
+   - **Linux/Ubuntu**: `sudo apt-get install python3-tk`
+   - **macOS**: Comes with Python installation
+   - **Windows**: Comes with Python installation
+
+3. **Gemini API Key**
+   - Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - Create a `.env` file in the project directory:
+     ```
+     GEMINI_API_KEY=your_api_key_here
+     ```
+
+### Install Python Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Application
+
+```bash
+python main.py
+```
+
 ## Overview
 
 This application features a tkinter-based GUI with:
