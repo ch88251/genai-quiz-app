@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
+from tkinter import ttk
 from typing import List, Optional
 from models import Question
 from gemini_client import GeminiClient
@@ -145,9 +146,19 @@ class QuizGUI:
         )
         self.forward_button.pack(side=tk.LEFT, padx=10)
         
-        # Status label
+        # Progress bar for loading questions
+        progress_frame = tk.Frame(self.root)
+        progress_frame.pack(pady=5, padx=20, fill=tk.X)
+        
+        self.progress_bar = ttk.Progressbar(
+            progress_frame,
+            mode='determinate',
+            length=400
+        )
+        self.progress_bar.pack(pady=5)
+        
         self.status_label = tk.Label(
-            self.root,
+            progress_frame,
             text="Loading questions...",
             font=("Arial", 10),
             fg="gray"
@@ -156,6 +167,8 @@ class QuizGUI:
     
     def _load_questions(self):
         """Load all questions from Gemini API."""
+        self.progress_bar['maximum'] = self.num_questions
+        self.progress_bar['value'] = 0
         self.status_label.config(text="Loading questions from Gemini API...")
         self.root.update()
         
@@ -164,12 +177,20 @@ class QuizGUI:
                 self.status_label.config(
                     text=f"Loading question {i + 1} of {self.num_questions}..."
                 )
+                self.progress_bar['value'] = i
                 self.root.update()
                 
                 question = self.gemini.generate_question(self.subject)
                 self.questions.append(question)
             
+            self.progress_bar['value'] = self.num_questions
             self.status_label.config(text="All questions loaded!")
+            self.root.update()
+            
+            # Hide progress bar and status after loading
+            self.root.after(1000, lambda: self.progress_bar.pack_forget())
+            self.root.after(1000, lambda: self.status_label.config(text=""))
+            
             self._display_question()
         except Exception as e:
             messagebox.showerror(
