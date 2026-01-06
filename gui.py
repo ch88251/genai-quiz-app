@@ -173,7 +173,8 @@ class QuizGUI:
         except Exception as e:
             messagebox.showerror(
                 "Error",
-                f"Failed to load questions: {str(e)}"
+                f"Unable to load questions. Please check your internet connection and API key.\n\n"
+                f"Technical details: {str(e)}"
             )
             self.root.destroy()
     
@@ -240,7 +241,7 @@ class QuizGUI:
             if user_answer is not None and user_answer == question.correct_index:
                 correct += 1
         
-        # Calculate percentage
+        # Calculate percentage (num_questions is guaranteed > 0 by dialog validation)
         percentage = (correct / self.num_questions) * 100
         
         # Display results
