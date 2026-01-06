@@ -1,0 +1,10 @@
+# Quiz Application Dependencies
+
+# Google Generative AI SDK for question generation
+google-genai>=1.56.0
+
+# Environment variable management for API keys
+python-dotenv>=1.2.1
+
+# Rich text formatting for CLI output (legacy CLI version)
+rich>=13.7.1
